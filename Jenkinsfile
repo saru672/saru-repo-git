@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage ('create container') {
 			steps {
-			sh " docker run -itdp 81:80 --name my-container-23Q1 httpd"
+			sh " docker run -itdp 80:80 --name my-container-23Q1 httpd"
 			}
 		}	
 		stage ('deploy') {
