@@ -5,6 +5,8 @@ pipeline {
 	stages {
 		stage ('create container') {
 			steps {
+			sh "docker stop my-container-23Q3 "
+			sh "docker rm my-container-23Q3"
 			sh " docker run -itdp 90:80 --name my-container-23Q3 httpd"
 			}
 		}	
