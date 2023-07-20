@@ -11,7 +11,7 @@ pipeline {
 		stage ('deploy') {
 			steps {
 			sh " docker cp index.html my-container-23Q3:/usr/local/apache2/htdocs"
-			sh " docker exec my-container-23Q2 chmod -R 777 /usr/local/apache2/"
+			sh " docker exec my-container-23Q3 chmod -R 777 /usr/local/apache2/"
 			}
 		}
 	}
