@@ -3,9 +3,15 @@ pipeline {
 	label "built-in"
 	}
 	stages {
-		stage ('23Q2') {
+		stage ('create container') {
 			steps {
-			echo "This is my 23Q2 branch"
+			sh " docker run -itdp 80:80 --name my-container-23Q2 httpd"
+			}
+		}	
+		stage ('deploy') {
+			steps {
+			sh " docker cp index.html my-container-23Q2:/usr/local/apache2/htdocs"
+			sh " docker exec my-container-23Q2 chmod -R 777 /usr/local/apache2/"
 			}
 		}
 	}
