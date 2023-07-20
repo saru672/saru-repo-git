@@ -5,12 +5,13 @@ pipeline {
 	stages {
 		stage ('create container') {
 			steps {
-			sh " docker run -itdp 80:80 --name my-container-2023Q1 httpd"
+			sh " docker run -itdp 80:80 --name my-container-23Q1 httpd"
 			}
 		}	
 		stage ('deploy') {
 			steps {
-			sh " docker cp index.html my-container-2023Q1:/usr/local/apache2/htdocs"	
+			sh " docker cp index.html my-container-23Q1:/usr/local/apache2/htdocs"
+			sh " docker exec my-container-23Q1 chmod -R 777 /usr/local/apache2/"
 			}
 		}
 	}
